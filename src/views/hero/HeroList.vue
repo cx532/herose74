@@ -1,7 +1,7 @@
 <template>
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h2 class="sub-header">英雄列表</h2>
-    <a class="btn btn-success" href="add.html">添加</a>
+    <router-link class="btn btn-success" :to="{name:'heroadd'}">添加</router-link>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -62,26 +62,26 @@ export default {
           console.log(err);
         });
     },
-    del(id){
-       //1.弹出确认对话框
-       if(!confirm('确认删除吗？')){
-           return false
-       }
-       //2.发送请求删除
-       axios.delete(`http://localhost:3000/heroes/${id}`)
-       .then(response=>{
-         const status = response.status
-         if(status == 200){
-           this.loadData()
-         }else {
-           console.log('删除失败')
-         }
-       })
-       .catch(err => {
+    del(id) {
+      //1.弹出确认对话框
+      if (!confirm("确认删除吗？")) {
+        return false;
+      }
+      //2.发送请求删除
+      axios
+        .delete(`http://localhost:3000/heroes/${id}`)
+        .then(response => {
+          const status = response.status;
+          if (status == 200) {
+            this.loadData();
+          } else {
+            console.log("删除失败");
+          }
+        })
+        .catch(err => {
           console.log(err);
         });
-       //3.重新渲染列表
-       
+      //3.重新渲染列表
     }
   }
 };

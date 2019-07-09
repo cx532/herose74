@@ -7,6 +7,8 @@ Vue.use(VueRouter)
 import HeroList from './views/hero/HeroList.vue'
 import WeaponList from './views/weapon/WeaponList.vue'
 import EquipList from './views/equip/EquipList.vue'
+import HeroAdd from './views/hero/HeroAdd.vue'
+
 //创建路由对象
 const router = new VueRouter({
     //当浏览器地址中的路由地址#/herorouoter-link生成的a标签的href一致时，添加样式
@@ -18,6 +20,7 @@ const router = new VueRouter({
     {name:'hero',path:'/hero',component: HeroList},
     {name:'weapon',path:'/weapon',component: WeaponList},
     {name:'equip',path:'/equip',component: EquipList},
+    {name:'heroadd',path:'/hero/add',component: HeroAdd},
   ]
 })
 //导出router对象
