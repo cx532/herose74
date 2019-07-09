@@ -46,7 +46,7 @@ export default {
   },
   methods: {
       getDataById(){
-          this.axios.get(`http://localhost:3000/heroes/${this.id}`)
+          this.axios.get(`heroes/${this.id}`)
           .then(response=>{
               const {status,data} = response
               if(status == 200){
@@ -57,7 +57,7 @@ export default {
           })
       },
       edit(){
-        this.axios.put(`http://localhost:3000/heroes/${this.id}`,this.formData)
+        this.axios.put(`heroes/${this.id}`,this.formData)
         .then(response=>{
           const status = response.status
           if(status == 200){

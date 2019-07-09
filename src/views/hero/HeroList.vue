@@ -48,7 +48,7 @@ export default {
   methods: {
     loadData() {
       this.axios
-        .get("http://localhost:3000/heroes")
+        .get("heroes")
         .then(response => {
           const { status, data } = response;
           if (status == 200) {
@@ -69,7 +69,7 @@ export default {
       }
       //2.发送请求删除
       this.axios
-        .delete(`http://localhost:3000/heroes/${id}`)
+        .delete(`heroes/${id}`)
         .then(response => {
           const status = response.status;
           if (status == 200) {
