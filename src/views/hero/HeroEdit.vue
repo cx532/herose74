@@ -1,6 +1,6 @@
 <template>
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <h2 class="sub-header">添加英雄</h2>
+    <h2 class="sub-header">修改英雄</h2>
     <form>
       <div class="form-group">
         <label for="txtName">姓名</label>
@@ -23,7 +23,7 @@
         />
       </div>
       <!-- 注意button是提交按钮会进行跳转，要阻止默认行为 -->
-      <button @click.prevent="add" class="btn btn-success">提交</button>
+      <button @click.prevent="edit" class="btn btn-success">提交</button>
     </form>
   </div>
 </template>
@@ -42,22 +42,7 @@ export default {
       }
     };
   },
-  methods: {
-    add() {
-      axios
-        .post("http://localhost:3000/heroes", this.formData)
-        .then(response => {
-          const status = response.status;
-          if (status == 201) {
-             //3.添加成功，跳转回列表
-            this.$router.push("/hero");
-          } else {
-              console.log('添加失败')
-          }
-        });
-    }
-  }
-};
+}
 </script>
 
 <style>
