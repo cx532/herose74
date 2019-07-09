@@ -29,8 +29,6 @@
 </template>
 
 <script>
-//注意要引入axios
-import axios from "axios";
 //1.绑定文本框
 //2.点击按钮发送请求，添加
 export default {
@@ -44,7 +42,7 @@ export default {
   },
   methods: {
     add() {
-      axios
+      this.axios
         .post("http://localhost:3000/heroes", this.formData)
         .then(response => {
           const status = response.status;
