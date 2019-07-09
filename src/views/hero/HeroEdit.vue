@@ -57,6 +57,17 @@ export default {
                   console.log('获取失败')
               }
           })
+      },
+      edit(){
+        axios.put(`http://localhost:3000/heroes/${this.id}`,this.formData)
+        .then(response=>{
+          const status = response.status
+          if(status == 200){
+              this.$router.push('/hero')
+          }else{
+              console.log('修改失败')
+          }
+        })
       }
   },
 }
