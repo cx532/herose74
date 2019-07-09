@@ -24,7 +24,7 @@ const router = new VueRouter({
     {name:'equip',path:'/equip',component: EquipList},
     {name:'heroadd',path:'/hero/add',component: HeroAdd},
     //动态路由地址：id
-    {name:'heroedit',path:'/hero/edit/:id',component: HeroEdit},
+    {name:'heroedit',path:'/hero/edit/:id',component: HeroEdit,props:true},
 
   ]
 })

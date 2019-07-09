@@ -34,6 +34,7 @@ import axios from "axios";
 //1.绑定文本框
 //2.点击按钮发送请求，添加
 export default {
+  props:['id'],
   data() {
     return {
       formData: {
@@ -41,6 +42,22 @@ export default {
         gender: ""
       }
     };
+  },
+  mounted(){
+      this.getDataById()
+  },
+  methods: {
+      getDataById(){
+          axios.get(`http://localhost:3000/heroes/${this.id}`)
+          .then(response=>{
+              const {status,data} = response
+              if(status == 200){
+                  this.formData = data
+              }else {
+                  console.log('获取失败')
+              }
+          })
+      }
   },
 }
 </script>
