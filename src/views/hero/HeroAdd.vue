@@ -4,25 +4,59 @@
     <form>
       <div class="form-group">
         <label for="txtName">姓名</label>
-        <input type="text" class="form-control" id="txtName" placeholder="姓名" />
+        <input
+          type="text"
+          class="form-control"
+          v-model="formData.name"
+          id="txtName"
+          placeholder="姓名"
+        />
       </div>
       <div class="form-group">
         <label for="gender">性别</label>
         <input
           type="txt"
+          v-model="formData.gender"
           class="form-control"
           id="gender"
           placeholder="性别"
         />
       </div>
-      <button @click.prevent="" class="btn btn-success">提交</button>
+      <!-- 注意button是提交按钮会进行跳转，要阻止默认行为 -->
+      <button @click.prevent="add" class="btn btn-success">提交</button>
     </form>
   </div>
 </template>
 
 <script>
+//注意要引入axios
+import axios from "axios";
+//1.绑定文本框
+//2.点击按钮发送请求，添加
 export default {
-    
+  data() {
+    return {
+      formData: {
+        name: "",
+        gender: "男"
+      }
+    };
+  },
+  methods: {
+    add() {
+      axios
+        .post("http://localhost:3000/heroes", this.formData)
+        .then(response => {
+          const status = response.status;
+          if (status == 201) {
+             //3.添加成功，跳转回列表
+            this.$router.push("/hero");
+          } else {
+              console.log('添加失败')
+          }
+        });
+    }
+  }
 };
 </script>
 
